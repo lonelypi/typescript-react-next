@@ -1,8 +1,16 @@
-import { createStore } from 'redux'
-import { reducer } from '../reducer'
+import React from 'react'
+import { NextPage } from 'next'
 
+interface InitialProps {
+  greeting: string
+}
 
-export default () => (<div>
-    Hello World
-  </div>
-)
+interface Props extends InitialProps {}
+
+const IndexPage: NextPage<Props, InitialProps> = (props) => {
+  return <h1>Hello World, {props.greeting}</h1>
+}
+
+IndexPage.getInitialProps = async () => ({ greeting: 'to the NextJS Tester.' })
+
+export default IndexPage
